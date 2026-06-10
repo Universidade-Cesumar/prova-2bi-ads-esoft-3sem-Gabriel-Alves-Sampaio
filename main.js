@@ -35,9 +35,32 @@ const exibirProdutos = () => {
                 <td>${p.unidade_medida || 'Unidade'}</td>
                 <td>${validade}</td>
                 <td><strong>${estoque}</strong></td>
-                <td>—</td>
+                <td>
+    <button class="btn-excluir" data-id="${p.id}">✕ Excluir</button>
+</td>
             </tr>`;
     }).join('');
+    tbody.querySelectorAll('.btn-excluir').forEach(btn => {
+    btn.addEventListener('click', () => executarExclusaoProduto(btn.dataset.id));
+});
+};
+
+const executarExclusaoProduto = async (produtoId) => {
+    const prod = dadosProdutos.find(p => String(p.id) === String(produtoId));
+    if (!prod) return;
+
+    if (!confirm(`Confirmar exclusão de "${prod.produto}"?`)) return;
+
+    try {
+        const res = await fetch(`${API_URL}/produtos/${produtoId}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        dadosProdutos = dadosProdutos.filter(p => String(p.id) !== String(produtoId));
+        exibirProdutos();
+    } catch (erro) {
+        console.error('Erro ao excluir:', erro);
+        alert('Erro ao excluir o item. Tente novamente.');
+    }
 };
 
 const executarCadastroProduto = async (e) => {
