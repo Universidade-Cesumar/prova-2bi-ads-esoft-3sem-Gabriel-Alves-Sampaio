@@ -50,3 +50,12 @@ const executarCadastroProduto = async (e) => {
         quantidade_estoque: Number(document.getElementById('input-quantidade').value),
         data_entrada: document.getElementById('novo-produto-data-entrada').value
     };
+     try {
+        const res = await fetch(`${API_URL}/produtos`, {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify(novoItem)
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+ 
+    
