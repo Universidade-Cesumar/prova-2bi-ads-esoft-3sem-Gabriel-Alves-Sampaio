@@ -39,3 +39,14 @@ const exibirProdutos = () => {
             </tr>`;
     }).join('');
 };
+
+const executarCadastroProduto = async (e) => {
+    e.preventDefault();
+ 
+    const novoItem = {
+        produto: document.getElementById('input-nome').value.trim(),
+        unidade_medida: document.getElementById('novo-produto-unidade').value.trim(),
+        categoria: document.getElementById('novo-produto-categoria').value,
+        quantidade_estoque: Number(document.getElementById('input-quantidade').value),
+        data_entrada: document.getElementById('novo-produto-data-entrada').value
+    };
