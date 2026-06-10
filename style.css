@@ -81,3 +81,11 @@ body {
     font-weight: bold;
 }
 .btn-excluir:hover { background-color: #bb2d3b; }
+/* TABELA */
+.tabela-custom { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.tabela-custom th, .tabela-custom td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+.tabela-custom th { background-color: #0f2c59; color: #fff; font-weight: 600; }
