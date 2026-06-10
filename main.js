@@ -58,4 +58,13 @@ const executarCadastroProduto = async (e) => {
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
  
-    
+     const salvo = await res.json();
+        dadosProdutos.push(salvo);
+        exibirProdutos();
+        document.getElementById('form-cadastro-produto').reset();
+        alert(`✅ "${salvo.produto}" adicionado ao estoque!`);
+    } catch (erro) {
+        console.error('Erro ao cadastrar:', erro);
+        alert('Erro ao salvar o produto. Tente novamente.');
+    }
+};
