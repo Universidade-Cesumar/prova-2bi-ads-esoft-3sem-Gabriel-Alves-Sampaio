@@ -89,3 +89,14 @@ body {
     border-bottom: 1px solid #eee;
 }
 .tabela-custom th { background-color: #0f2c59; color: #fff; font-weight: 600; }
+
+.badge-tipo {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+    color: white;
+}
+.bg-info      { background-color: #0dcaf0; color: #000; }
+.bg-secondary { background-color: #6c757d; }
