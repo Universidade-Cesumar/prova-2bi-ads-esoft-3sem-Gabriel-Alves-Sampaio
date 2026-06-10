@@ -28,4 +28,14 @@ const exibirProdutos = () => {
             : 'Uso Continuado';
         const badgeClass = p.categoria === 'Permanente' ? 'bg-info' : 'bg-secondary';
  
-       
+        return `
+            <tr data-id="${p.id}">
+                <td>${p.produto || 'Sem Nome'}</td>
+                <td><span class="badge-tipo ${badgeClass}">${p.categoria || 'Consumo'}</span></td>
+                <td>${p.unidade_medida || 'Unidade'}</td>
+                <td>${validade}</td>
+                <td><strong>${estoque}</strong></td>
+                <td>—</td>
+            </tr>`;
+    }).join('');
+};
