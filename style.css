@@ -33,3 +33,16 @@ body {
     padding-bottom: 8px;
     margin-bottom: 20px;
 }
+.bloco-cadastro {
+    background: #f8f9fa;
+    border-left: 4px solid #198754;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.bloco-cadastro h5 { margin-bottom: 10px; color: #333; }
+ 
+.form-cadastro-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.form-cadastro-grid .campo-input,
+.form-cadastro-grid .campo-select { flex: 1; min-width: 140px; }
+.form-cadastro-grid button { flex: 0 0 90px; }
