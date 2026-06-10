@@ -46,3 +46,14 @@ body {
 .form-cadastro-grid .campo-input,
 .form-cadastro-grid .campo-select { flex: 1; min-width: 140px; }
 .form-cadastro-grid button { flex: 0 0 90px; }
+
+.campo-input, .campo-select {
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background: #fff;
+}
+.campo-input:focus, .campo-select:focus { border-color: #0d6efd; outline: none; }
