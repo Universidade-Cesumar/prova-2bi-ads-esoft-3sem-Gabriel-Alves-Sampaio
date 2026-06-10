@@ -18,6 +18,18 @@
             <div class="bloco-cadastro">
                 <h5>+ Adicionar Novo Insumo ao Estoque</h5>
                 <form id="form-cadastro-produto" class="form-cadastro-grid">
+                       <input type="text" id="input-nome" class="campo-input" placeholder="Nome do Insumo" required>
+                    <input type="text" id="novo-produto-unidade" class="campo-input" placeholder="Unid. Medida (ex: Unidade)" required>
+                    <select id="novo-produto-categoria" class="campo-select" required>
+                        <option value="Consumo">Consumo</option>
+                        <option value="Permanente">Permanente</option>
+                    </select>
+                      <option value="Consumo">Consumo</option>
+                        <option value="Permanente">Permanente</option>
+                    </select>
+                    <!-- CONTRATO: id="input-quantidade" -->
+                    <input type="number" id="input-quantidade"         class="campo-input" placeholder="Qtd Inicial" required min="0">
+                    <input type="date"   id="novo-produto-data-entrada" class="campo-input" title="Data de Validade/Entrada">
 
            </section>
 
