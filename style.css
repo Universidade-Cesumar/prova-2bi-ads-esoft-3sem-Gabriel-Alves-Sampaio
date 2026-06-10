@@ -17,3 +17,19 @@ body {
     margin-bottom: 25px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
+.header-sistema h1 { font-size: 1.7rem; margin-bottom: 4px; }
+ 
+.secao-card {
+    background: #fff;
+    border: 1px solid #e1e6eb;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+.titulo-secao {
+    font-size: 1.3rem;
+    color: #0f2c59;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
