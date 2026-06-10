@@ -16,3 +16,16 @@ const sincronizarBancoRemoto = async () => {
         alert('Não foi possível carregar os dados. Verifique sua conexão.');
     }
 };
+
+const exibirProdutos = () => {
+    const tbody = document.getElementById('lista-materiais');
+    if (!tbody) return;
+ 
+    tbody.innerHTML = dadosProdutos.map(p => {
+        const estoque  = Number(p.quantidade_estoque || 0);
+        const validade = p.data_entrada
+            ? new Date(p.data_entrada).toLocaleDateString('pt-BR')
+            : 'Uso Continuado';
+        const badgeClass = p.categoria === 'Permanente' ? 'bg-info' : 'bg-secondary';
+ 
+       
