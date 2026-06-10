@@ -27,11 +27,30 @@
                       <option value="Consumo">Consumo</option>
                         <option value="Permanente">Permanente</option>
                     </select>
-                    <!-- CONTRATO: id="input-quantidade" -->
-                    <input type="number" id="input-quantidade"         class="campo-input" placeholder="Qtd Inicial" required min="0">
-                    <input type="date"   id="novo-produto-data-entrada" class="campo-input" title="Data de Validade/Entrada">
 
-           </section>
+                    <input type="number" id="input-quantidade" class="campo-input" placeholder="Qtd Inicial" required min="0">
+                    <input type="date" id="novo-produto-data-entrada" class="campo-input" title="Data de Validade/Entrada">
+
+                   
+                    <button type="submit" id="btn-cadastrar" class="btn-acao btn-verde">Adicionar</button>
+                </form>
+            </div>
+ 
+            <!-- Tabela de estoque  -->
+            <table class="tabela-custom">
+                <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Tipo</th>
+                        <th>Unidade</th>
+                        <th>Validade / Entrada</th>
+                        <th>Estoque Atual</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-materiais"></tbody>
+            </table>
+        </section>
 
          </main>
 
