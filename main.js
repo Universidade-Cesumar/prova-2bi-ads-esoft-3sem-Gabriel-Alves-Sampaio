@@ -68,3 +68,7 @@ const executarCadastroProduto = async (e) => {
         alert('Erro ao salvar o produto. Tente novamente.');
     }
 };
+document.getElementById('form-cadastro-produto')
+    ?.addEventListener('submit', executarCadastroProduto);
+ 
+window.addEventListener('DOMContentLoaded', sincronizarBancoRemoto);
