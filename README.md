@@ -13,6 +13,15 @@ Este projeto consiste em uma aplicação web SPA (*Single Page Application*) des
 
 ---
 
+🛠️ Tecnologias Utilizadas
+HTML5 (Estruturação semântica)
+
+CSS3 (Estilização e layout)
+
+JavaScript (ES6+) (Lógica de negócios e consumo de API)
+
+MockAPI.io (Serviço de Mock de API REST)
+
 ## 🚀 Entregas da Sprint 1
 
 ### 1. Interface Avançada (HTML5 & CSS3)
