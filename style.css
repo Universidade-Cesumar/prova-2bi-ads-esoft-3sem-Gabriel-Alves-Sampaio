@@ -3,14 +3,14 @@
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #f4f6f9;
-    color: #333;
+    color: #ffffff;
     padding-bottom: 50px;
 }
  
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
  
 .header-sistema {
-    background-color: #0f2c59;
+    background-color: #0f2d59ab;
     color: #fff;
     text-align: center;
     padding: 20px;
@@ -20,12 +20,18 @@ body {
 .header-sistema h1 { font-size: 1.7rem; margin-bottom: 4px; }
  
 .secao-card {
-    background: #fff;
+    background: #0f2d59ab;
     border: 1px solid #e1e6eb;
     border-radius: 8px;
     padding: 25px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
+    .secao-card:hover
+    {
+scale: 1.005;
+transition: transform 0.9s ease-in-out;
+
+    }
 .titulo-secao {
     font-size: 1.3rem;
     color: #0f2c59;
