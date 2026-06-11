@@ -14,10 +14,10 @@ body {
     color: #fff;
     text-align: center;
     padding: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-.header-sistema h1 { font-size: 1.7rem; margin-bottom: 4px; }
+.header-sistema h1 { font-size: 1.4rem; margin-bottom: 4px; }
  
 .secao-card {
     background: #0f2d59ab;
@@ -35,7 +35,7 @@ transition: transform 0.9s ease-in-out;
 .titulo-secao {
     font-size: 1.3rem;
     color: #0f2c59;
-    border-bottom: 2px solid #e9ecef;
+    border-bottom: 2px ;
     padding-bottom: 8px;
     margin-bottom: 20px;
 }
@@ -43,10 +43,10 @@ transition: transform 0.9s ease-in-out;
     background: #f8f9fa;
     border-left: 4px solid #198754;
     padding: 15px;
-    border-radius: 4px;
-    margin-bottom: 20px;
+    border-radius: 1px;
+    margin-bottom: 10px;
 }
-.bloco-cadastro h5 { margin-bottom: 10px; color: #333; }
+.bloco-cadastro h5 { margin-bottom: 10px; color: #000000; }
  
 .form-cadastro-grid { display: flex; flex-wrap: wrap; gap: 10px; }
 .form-cadastro-grid .campo-input,
@@ -57,17 +57,17 @@ transition: transform 0.9s ease-in-out;
     width: 100%;
     height: 40px;
     padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 1px;
+    border-radius: 1px;
     font-size: 0.95rem;
-    background: #fff;
+    background: #c9c9c9;
 }
 .campo-input:focus, .campo-select:focus { border-color: #0d6efd; outline: none; }
 
 .btn-acao {
     height: 40px;
     border: none;
-    border-radius: 4px;
+    border-radius: 1px;
     font-weight: bold;
     color: #fff;
     cursor: pointer;
@@ -80,8 +80,8 @@ transition: transform 0.9s ease-in-out;
     background-color: #dc3545;
     color: #ffffff;
     border: none;
-    border-radius: 4px;
-    padding: 4px 10px;
+    border-radius: 1px;
+    padding: 2px 10px;
     cursor: pointer;
     font-size: 0.85rem;
     font-weight: bold;
