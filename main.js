@@ -8,6 +8,9 @@ let dadosProdutos = [];
 const sincronizarBancoRemoto = async () => {
     try {
         const res = await fetch(`${API_URL}/produtos`);
+   
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        
         dadosProdutos = await res.json();
         if (!Array.isArray(dadosProdutos)) dadosProdutos = [];
         exibirProdutos();
@@ -23,8 +26,10 @@ const exibirProdutos = () => {
  
     tbody.innerHTML = dadosProdutos.map(p => {
         const estoque  = Number(p.quantidade_estoque || 0);
+        
+       
         const validade = p.data_entrada
-            ? new Date(p.data_entrada).toLocaleDateString('pt-BR')
+            ? new Date(p.data_entrada + 'T00:00:00').toLocaleDateString('pt-BR')
             : 'Uso Continuado';
         const badgeClass = p.categoria === 'Permanente' ? 'bg-info' : 'bg-secondary';
  
@@ -66,12 +71,15 @@ const executarExclusaoProduto = async (produtoId) => {
 const executarCadastroProduto = async (e) => {
     e.preventDefault();
  
+   
+    const dataDigitada = document.getElementById('novo-produto-data-entrada').value;
+
     const novoItem = {
         produto: document.getElementById('input-nome').value.trim(),
         unidade_medida: document.getElementById('novo-produto-unidade').value.trim(),
         categoria: document.getElementById('novo-produto-categoria').value,
         quantidade_estoque: Number(document.getElementById('input-quantidade').value),
-        data_entrada: document.getElementById('novo-produto-data-entrada').value
+        data_entrada: dataDigitada || new Date().toISOString().split('T')[0]
     };
      try {
         const res = await fetch(`${API_URL}/produtos`, {
