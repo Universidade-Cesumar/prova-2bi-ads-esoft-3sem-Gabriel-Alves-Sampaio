@@ -84,3 +84,12 @@ Com a base de inventário consolidada, o Sprint 2 introduz as **regras de negóc
 - MockAPI.io (Serviço de Mock de API REST)
 ---
  
+## 🚀 Entregas da Sprint 2
+ 
+### 1. Módulo de Saída / Baixa de Estoque
+ 
+* **Formulário de Retirada:** Nova seção com seletor de material, campo de quantidade, instrutor solicitante, destino e motivo da saída.
+* **Contrato Técnico Estrito:** Garantia de integridade dos seletores para testes automatizados:
+    * `#input-retirada` — campo de quantidade a retirar
+    * `.btn-baixar` — botão de confirmação da baixa (PUT)
+    * `.btn-excluir` — botão de exclusão por linha (DELETE)
