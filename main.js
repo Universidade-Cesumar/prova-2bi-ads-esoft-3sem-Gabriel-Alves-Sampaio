@@ -115,6 +115,17 @@ function validarRetirada(estoqueAtual, qtdRetirada) {
     if (qtdRetirada > estoqueAtual) return false;
     return true;
 }
+const executarBaixaEstoque = async (e) => {
+    e.preventDefault();
+ 
+    const produtoId   = document.getElementById('select-produto-saida').value;
+    const quantidade  = Number(document.getElementById('input-retirada').value);
+    const responsavel = document.getElementById('responsavel').value.trim();
+    const destino     = document.getElementById('destino').value.trim();
+    const motivo      = document.getElementById('motivo').value;
+ 
+    const produto = dadosProdutos.find(p => String(p.id) === String(produtoId));
+    if (!produto) { alert('Selecione um material válido.'); return; }
 
 
 
