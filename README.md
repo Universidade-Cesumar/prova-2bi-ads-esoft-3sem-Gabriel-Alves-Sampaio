@@ -111,3 +111,21 @@ function validarRetirada(estoqueAtual, qtdRetirada) {
 | Quantidade `>` estoque | `false` — operação bloqueada |
 | Quantidade válida | `true` — operação liberada |
  
+### 3. Exclusão de Materiais (DELETE)
+ 
+Botão `.btn-excluir` injetado dinamicamente em cada linha da tabela. Ao clicar, o sistema exibe uma confirmação de segurança e dispara `DELETE /produtos/:id`, removendo o registro do servidor e do estado local simultaneamente.
+ 
+---
+ 
+## 🌐 Integração com a API (MockAPI.io)
+ 
+| Método | Endpoint | Gatilho | Descrição |
+| :--- | :--- | :--- | :--- |
+| **GET** | `/produtos` | `DOMContentLoaded` | Carrega o inventário e preenche o select de saída |
+| **POST** | `/produtos` | `#btn-cadastrar` | Cadastra novo insumo na nuvem |
+| **POST** | `/movimentacoes` | `.btn-baixar` | Registra a saída como log imutável de auditoria |
+| **PUT** | `/produtos/:id` | `.btn-baixar` | Deduz a quantidade e atualiza o saldo no servidor |
+| **DELETE** | `/produtos/:id` | `.btn-excluir` | Remove o insumo do banco de dados remoto |
+ 
+---
+ 
