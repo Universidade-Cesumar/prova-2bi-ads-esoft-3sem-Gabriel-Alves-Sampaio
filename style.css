@@ -107,4 +107,31 @@ transition: transform 0.9s ease-in-out;
 .bg-info      { background-color: #0dcaf0; color: #000; }
 .bg-secondary { background-color: #6c757d; }
 
-.oculto { display: none !important; }
+
+.form-vertical-bloco {
+display: flex;
+flex-direction: column;
+gap: 15px; }
+
+.grupo-campo { 
+display: flex; 
+flex-direction: column; 
+gap: 5px; }
+
+.rotulo { 
+font-weight: 600; 
+font-size: 0.9rem; 
+color: #ffffff; }
+
+.linha-campos-tripla {
+ display: flex; 
+ gap: 15px; }
+
+.linha-campos-tripla .grupo-campo {
+     flex: 1; }
+.container-botao-direita {
+     text-align: right; 
+     margin-top: 10px; }
+
+.btn-baixar { background-color: #198754; }
+.btn-baixar:hover { background-color: #157347; }
