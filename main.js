@@ -136,6 +136,21 @@ const executarBaixaEstoque = async (e) => {
      const novoEstoque = estoqueAtual - quantidade;
  
     try {
+
+            const resMov = await fetch(`${API_URL}/movimentacoes`, {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                produtoId,
+                quantidade,
+                responsavel,
+                destino,
+                motivo,
+                data_movimentacao: new Date().toISOString()
+            })
+        });
+        
+        if (!resMov.ok) throw new Error(`HTTP ${resMov.status}`);
         const resPut = await fetch(`${API_URL}/produtos/${produtoId}`, {
             method:  'PUT',
             headers: { 'Content-Type': 'application/json' },
