@@ -50,13 +50,13 @@
            <section id="secao-saida" class="secao-card oculto">
               <h3 class="titulo-secao">Registrar Saída / Baixa</h3>
                           <form id="form-movimentacao" class="form-vertical-bloco">
-                  <div class="grupo-campo">
+                    <div class="grupo-campo">
                     <label class="rotulo">Material</label>
                     <select id="select-produto-saida" class="campo-select" required>
                         <option value="" disabled selected>Selecione um material</option>
                     </select>
-                  </div>
-                  <div class="linha-campos-tripla">
+                    </div>
+                    <div class="linha-campos-tripla">
                     <div class="grupo-campo">
                         <label class="rotulo">Quantidade para Baixa</label>
                         <input type="number" id="input-retirada" class="campo-input" required min="1">
@@ -69,6 +69,16 @@
                      <div class="grupo-campo">
                         <label class="rotulo">Destino / Setor</label>
                         <input type="text" id="destino" class="campo-input" placeholder="Ex: Laboratório C" required>
+                    </div>
+                      </div>
+ 
+                    <div class="grupo-campo">
+                    <label class="rotulo">Motivo do Uso</label>
+                    <select id="motivo" class="campo-select">
+                        <option value="Aula Prática">Aula Prática</option>
+                        <option value="Ação Externa">Ação Externa</option>
+                        <option value="Descarte/Avaria">Descarte / Item Danificado</option>
+                    </select>
                     </div>
             </form>
 
