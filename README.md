@@ -93,3 +93,21 @@ Com a base de inventário consolidada, o Sprint 2 introduz as **regras de negóc
     * `#input-retirada` — campo de quantidade a retirar
     * `.btn-baixar` — botão de confirmação da baixa (PUT)
     * `.btn-excluir` — botão de exclusão por linha (DELETE)
+### 2. Validação Matemática (Motor de Retirada)
+ 
+Função obrigatória de contrato implementada para blindar o banco de dados contra inconsistências:
+ 
+```javascript
+function validarRetirada(estoqueAtual, qtdRetirada) {
+    if (qtdRetirada <= 0)           return false;
+    if (qtdRetirada > estoqueAtual) return false;
+    return true;
+}
+```
+ 
+| Cenário | Resultado |
+|---|---|
+| Quantidade `<= 0` | `false` — operação bloqueada |
+| Quantidade `>` estoque | `false` — operação bloqueada |
+| Quantidade válida | `true` — operação liberada |
+ 
