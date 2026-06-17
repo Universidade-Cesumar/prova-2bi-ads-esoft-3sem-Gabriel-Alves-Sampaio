@@ -14,6 +14,7 @@ const sincronizarBancoRemoto = async () => {
         dadosProdutos = await res.json();
         if (!Array.isArray(dadosProdutos)) dadosProdutos = [];
         exibirProdutos();
+        preencherSelectSaida();
     } catch (erro) {
         console.error('Erro ao carregar produtos:', erro);
         alert('Não foi possível carregar os dados. Verifique sua conexão.');
@@ -62,6 +63,7 @@ const executarExclusaoProduto = async (produtoId) => {
 
         dadosProdutos = dadosProdutos.filter(p => String(p.id) !== String(produtoId));
         exibirProdutos();
+        preencherSelectSaida();
     } catch (erro) {
         console.error('Erro ao excluir:', erro);
         alert('Erro ao excluir o item. Tente novamente.');
@@ -92,6 +94,7 @@ const executarCadastroProduto = async (e) => {
      const salvo = await res.json();
         dadosProdutos.push(salvo);
         exibirProdutos();
+        preencherSelectSaida();
         document.getElementById('form-cadastro-produto').reset();
         alert(`✅ "${salvo.produto}" adicionado ao estoque!`);
     } catch (erro) {
