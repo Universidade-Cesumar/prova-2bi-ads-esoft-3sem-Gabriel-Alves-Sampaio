@@ -106,3 +106,5 @@ transition: transform 0.9s ease-in-out;
 }
 .bg-info      { background-color: #0dcaf0; color: #000; }
 .bg-secondary { background-color: #6c757d; }
+
+.oculto { display: none !important; }
