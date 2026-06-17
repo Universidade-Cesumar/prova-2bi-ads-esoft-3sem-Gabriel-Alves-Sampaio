@@ -110,6 +110,11 @@ const preencherSelectSaida = () => {
             `<option value="${p.id}">${p.produto} (Saldo: ${p.quantidade_estoque || 0})</option>`
         ).join('');
 };
+function validarRetirada(estoqueAtual, qtdRetirada) {
+    if (qtdRetirada <= 0)           return false;
+    if (qtdRetirada > estoqueAtual) return false;
+    return true;
+}
 
 
 
