@@ -153,7 +153,8 @@ const executarBaixaEstoque = async (e) => {
         alert('Erro ao registrar a saída. Tente novamente.');
     }
 };
-
+document.getElementById('form-movimentacao')
+    ?.addEventListener('submit', executarBaixaEstoque);
 
 
 document.getElementById('form-cadastro-produto')
