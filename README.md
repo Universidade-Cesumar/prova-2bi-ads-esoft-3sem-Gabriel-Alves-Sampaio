@@ -129,3 +129,40 @@ Botão `.btn-excluir` injetado dinamicamente em cada linha da tabela. Ao clicar,
  
 ---
  
+## 📋 Modelos de Dados
+ 
+### Produto (`/produtos`)
+```json
+{
+  "id": "4",
+  "produto": "Agulhas 25x7",
+  "unidade_medida": "Unidade",
+  "quantidade_estoque": 250,
+  "categoria": "Consumo",
+  "data_entrada": "2027-01-15"
+}
+```
+ 
+### Movimentação (`/movimentacoes`)
+```json
+{
+  "id": "101",
+  "produtoId": "4",
+  "quantidade": 30,
+  "responsavel": "Camilla Sambati",
+  "destino": "Laboratório de Práticas Básicas",
+  "motivo": "Aula Prática de Enfermagem",
+  "data_movimentacao": "2026-06-09T18:30:00.000Z"
+}
+```
+ 
+---
+ 
+## 📁 Arquivos
+ 
+```
+index.html   → estrutura da página, seção de saída e IDs do contrato
+style.css    → estilização visual incluindo .oculto, .btn-baixar e .btn-excluir
+main.js      → validarRetirada, executarBaixaEstoque (PUT + POST), executarExclusaoProduto (DELETE)
+```
+ 
