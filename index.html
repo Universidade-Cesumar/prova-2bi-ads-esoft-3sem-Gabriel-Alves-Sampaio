@@ -50,12 +50,12 @@
            <section id="secao-saida" class="secao-card oculto">
               <h3 class="titulo-secao">Registrar Saída / Baixa</h3>
                           <form id="form-movimentacao" class="form-vertical-bloco">
-               <div class="grupo-campo">
+                  <div class="grupo-campo">
                     <label class="rotulo">Material</label>
                     <select id="select-produto-saida" class="campo-select" required>
                         <option value="" disabled selected>Selecione um material</option>
                     </select>
-                </div>
+                  </div>
                   <div class="linha-campos-tripla">
                     <div class="grupo-campo">
                         <label class="rotulo">Quantidade para Baixa</label>
@@ -65,6 +65,10 @@
                     <div class="grupo-campo">
                         <label class="rotulo">Instrutor Solicitante</label>
                         <input type="text" id="responsavel" class="campo-input" placeholder="Nome do Professor" required>
+                    </div>
+                     <div class="grupo-campo">
+                        <label class="rotulo">Destino / Setor</label>
+                        <input type="text" id="destino" class="campo-input" placeholder="Ex: Laboratório C" required>
                     </div>
             </form>
 
