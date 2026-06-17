@@ -127,6 +127,33 @@ const executarBaixaEstoque = async (e) => {
     const produto = dadosProdutos.find(p => String(p.id) === String(produtoId));
     if (!produto) { alert('Selecione um material válido.'); return; }
 
+     const estoqueAtual = Number(produto.quantidade_estoque || 0);
+ 
+    if (!validarRetirada(estoqueAtual, quantidade)) {
+        alert(`⚠️ Operação negada!\nEstoque atual: ${estoqueAtual}\nQuantidade solicitada: ${quantidade}`);
+        return;
+    }
+     const novoEstoque = estoqueAtual - quantidade;
+ 
+    try {
+        const resPut = await fetch(`${API_URL}/produtos/${produtoId}`, {
+            method:  'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify({ quantidade_estoque: novoEstoque })
+        });
+        if (!resPut.ok) throw new Error(`HTTP ${resPut.status}`);
+ 
+        produto.quantidade_estoque = novoEstoque;
+        exibirProdutos();
+        preencherSelectSaida();
+        document.getElementById('form-movimentacao').reset();
+        alert(`✅ Saída registrada! Novo saldo de "${produto.produto}": ${novoEstoque}`);
+    } catch (erro) {
+        console.error('Erro ao registrar baixa:', erro);
+        alert('Erro ao registrar a saída. Tente novamente.');
+    }
+};
+
 
 
 document.getElementById('form-cadastro-produto')
