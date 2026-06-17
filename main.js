@@ -102,6 +102,17 @@ const executarCadastroProduto = async (e) => {
         alert('Erro ao salvar o produto. Tente novamente.');
     }
 };
+const preencherSelectSaida = () => {
+    const select = document.getElementById('select-produto-saida');
+    if (!select) return;
+    select.innerHTML = '<option value="" disabled selected>Selecione um material</option>' +
+        dadosProdutos.map(p =>
+            `<option value="${p.id}">${p.produto} (Saldo: ${p.quantidade_estoque || 0})</option>`
+        ).join('');
+};
+
+
+
 document.getElementById('form-cadastro-produto')
     ?.addEventListener('submit', executarCadastroProduto);
  
