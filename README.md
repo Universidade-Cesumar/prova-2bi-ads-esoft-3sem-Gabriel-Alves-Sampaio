@@ -62,3 +62,25 @@ A comunicação com o backend segue as convenções do protocolo HTTP/REST:
   "categoria": "Consumo",
   "data_entrada": "2027-01-15"
 }
+
+# Sistema de Gestão de Insumos Hospitalares
+> **SENAC** | Sprint 2 — Regras de Negócio e Saídas
+ 
+Evolução do sistema iniciado no Sprint 1. Esta entrega implementa o módulo completo de retirada de estoque com validação matemática, exclusão de materiais e rastreabilidade de movimentações persistidas na nuvem.
+ 
+---
+ 
+## 📌 Visão Geral da Sprint
+ 
+Com a base de inventário consolidada, o Sprint 2 introduz as **regras de negócio críticas** do almoxarifado: nenhuma operação de saída pode resultar em estoque negativo ou ser registrada com quantidade inválida. Toda baixa aprovada é persistida no servidor como um registro imutável de auditoria.
+ 
+---
+ 
+## 🛠️ Tecnologias Utilizadas
+ 
+- HTML5 (Estruturação semântica)
+- CSS3 (Estilização e layout)
+- JavaScript (ES6+) (Lógica de negócios e consumo de API)
+- MockAPI.io (Serviço de Mock de API REST)
+---
+ 
