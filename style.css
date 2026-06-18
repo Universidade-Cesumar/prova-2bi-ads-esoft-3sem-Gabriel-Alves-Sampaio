@@ -48,7 +48,11 @@ transition: transform 0.9s ease-in-out;
 }
 .bloco-cadastro h5 { margin-bottom: 10px; color: #000000; }
  
-.form-cadastro-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.form-cadastro-grid {
+     display: flex; 
+     flex-wrap: wrap; 
+     gap: 10px; }
+     
 .form-cadastro-grid .campo-input,
 .form-cadastro-grid .campo-select { flex: 1; min-width: 140px; }
 .form-cadastro-grid button { flex: 0 0 90px; }
