@@ -4,7 +4,6 @@ const API_URL = 'https://6a2881a64e1e783349a59694.mockapi.io/api/v1';
 
 let dadosProdutos = [];
  
-
 const sincronizarBancoRemoto = async () => {
     try {
         const res = await fetch(`${API_URL}/produtos`);
@@ -21,37 +20,52 @@ const sincronizarBancoRemoto = async () => {
     }
 };
 
-const exibirProdutos = () => {
+// Modificado para aceitar o termo de busca (Sprint 3)
+const exibirProdutos = (termoBusca = '') => {
     const tbody = document.getElementById('lista-materiais');
+    const elTotalItens = document.getElementById('total-itens');
     if (!tbody) return;
+
+    // Lógica de Filtro
+    const produtosFiltrados = dadosProdutos.filter(p => 
+        p.produto && p.produto.toLowerCase().includes(termoBusca.toLowerCase())
+    );
+
+    // Atualiza o total de itens (Sprint 3)
+    if (elTotalItens) {
+        elTotalItens.textContent = produtosFiltrados.length;
+    }
  
-    tbody.innerHTML = dadosProdutos.map(p => {
+    tbody.innerHTML = produtosFiltrados.map(p => {
         const estoque  = Number(p.quantidade_estoque || 0);
         
         const validade = p.data_entrada
             ? new Date(p.data_entrada + 'T00:00:00').toLocaleDateString('pt-BR')
             : 'Uso Continuado';
         const badgeClass = p.categoria === 'Permanente' ? 'bg-info' : 'bg-secondary';
+        
+        // Regra de negócio: estoque crítico (Sprint 3)
+        const classeCritica = estoque < 10 ? 'estoque-critico' : '';
  
         return `
-            <tr data-id="${p.id}">
+            <tr data-id="${p.id}" class="${classeCritica}">
                 <td>${p.produto || 'Sem Nome'}</td>
                 <td><span class="badge-tipo ${badgeClass}">${p.categoria || 'Consumo'}</span></td>
                 <td>${p.unidade_medida || 'Unidade'}</td>
                 <td>${validade}</td>
                 <td><strong>${estoque}</strong></td>
                 <td>
-                    <input type="number" id="input-retirada" class="campo-input input-retirada-lista" data-id="${p.id}" placeholder="Qtd" min="1" style="width: 60px; display: inline-block; margin-right: 5px;">
+                    <input type="number" class="campo-input input-retirada-lista" data-id="${p.id}" placeholder="Qtd" min="1" style="width: 60px; display: inline-block; margin-right: 5px;">
                     <button class="btn-baixar" data-id="${p.id}">⬇ Baixar</button>
                     <button class="btn-excluir" data-id="${p.id}">✕ Excluir</button>
                 </td>
             </tr>`;
     }).join('');
+
     tbody.querySelectorAll('.btn-excluir').forEach(btn => {
         btn.addEventListener('click', () => executarExclusaoProduto(btn.dataset.id));
     });
 
-  
     tbody.querySelectorAll('.btn-baixar').forEach(btn => {
         btn.addEventListener('click', () => {
             const id = btn.dataset.id;
@@ -74,7 +88,9 @@ const executarExclusaoProduto = async (produtoId) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         dadosProdutos = dadosProdutos.filter(p => String(p.id) !== String(produtoId));
-        exibirProdutos();
+        // Mantém a busca atual ao recarregar a tela
+        const termoBusca = document.getElementById('input-busca')?.value || '';
+        exibirProdutos(termoBusca);
         preencherSelectSaida();
     } catch (erro) {
         console.error('Erro ao excluir:', erro);
@@ -85,7 +101,6 @@ const executarExclusaoProduto = async (produtoId) => {
 const executarCadastroProduto = async (e) => {
     e.preventDefault();
  
-   
     const dataDigitada = document.getElementById('novo-produto-data-entrada').value;
 
     const novoItem = {
@@ -103,10 +118,13 @@ const executarCadastroProduto = async (e) => {
         });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
  
-     const salvo = await res.json();
+        const salvo = await res.json();
         dadosProdutos.push(salvo);
-        exibirProdutos();
+        
+        const termoBusca = document.getElementById('input-busca')?.value || '';
+        exibirProdutos(termoBusca);
         preencherSelectSaida();
+        
         document.getElementById('form-cadastro-produto').reset();
         alert(`✅ "${salvo.produto}" adicionado ao estoque!`);
     } catch (erro) {
@@ -124,13 +142,11 @@ const preencherSelectSaida = () => {
         ).join('');
 };
 
-
 function validarRetirada(estoqueAtual, qtdRetirada) {
     if (qtdRetirada <= 0)           return false;
     if (qtdRetirada > estoqueAtual) return false;
     return true;
 }
-
 
 const executarBaixaEstoqueDireta = async (produtoId, quantidade) => {
     if (!quantidade || quantidade <= 0) {
@@ -159,15 +175,17 @@ const executarBaixaEstoqueDireta = async (produtoId, quantidade) => {
         if (!resPut.ok) throw new Error(`HTTP ${resPut.status}`);
  
         produto.quantidade_estoque = novoEstoque;
-        exibirProdutos();
+        
+        const termoBusca = document.getElementById('input-busca')?.value || '';
+        exibirProdutos(termoBusca);
         preencherSelectSaida();
+        
         alert(`✅ Saída registrada! Novo saldo de "${produto.produto}": ${novoEstoque}`);
     } catch (erro) {
         console.error('Erro ao registrar baixa:', erro);
         alert('Erro ao registrar a saída. Tente novamente.');
     }
 };
-
 
 const executarBaixaEstoque = async (e) => {
     e.preventDefault();
@@ -212,8 +230,11 @@ const executarBaixaEstoque = async (e) => {
         if (!resPut.ok) throw new Error(`HTTP ${resPut.status}`);
  
         produto.quantidade_estoque = novoEstoque;
-        exibirProdutos();
+        
+        const termoBusca = document.getElementById('input-busca')?.value || '';
+        exibirProdutos(termoBusca);
         preencherSelectSaida();
+        
         document.getElementById('form-movimentacao').reset();
         alert(`✅ Saída registrada! Novo saldo de "${produto.produto}": ${novoEstoque}`);
     } catch (erro) {
@@ -222,10 +243,13 @@ const executarBaixaEstoque = async (e) => {
     }
 };
 
-document.getElementById('form-movimentacao')
-    ?.addEventListener('submit', executarBaixaEstoque);
+// Eventos de Submissão
+document.getElementById('form-movimentacao')?.addEventListener('submit', executarBaixaEstoque);
+document.getElementById('form-cadastro-produto')?.addEventListener('submit', executarCadastroProduto);
 
-document.getElementById('form-cadastro-produto')
-    ?.addEventListener('submit', executarCadastroProduto);
+// Evento de Busca (Sprint 3)
+document.getElementById('input-busca')?.addEventListener('input', (e) => {
+    exibirProdutos(e.target.value);
+});
  
 window.addEventListener('DOMContentLoaded', sincronizarBancoRemoto);
