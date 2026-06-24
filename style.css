@@ -26,12 +26,10 @@ body {
     padding: 25px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.02);
 }
-    .secao-card:hover
-    {
-scale: 1.005;
-transition: transform 0.9s ease-in-out;
-
-    }
+.secao-card:hover {
+    scale: 1.005;
+    transition: transform 0.9s ease-in-out;
+}
 .titulo-secao {
     font-size: 1.3rem;
     color: #0f2c59;
@@ -51,7 +49,8 @@ transition: transform 0.9s ease-in-out;
 .form-cadastro-grid {
      display: flex; 
      flex-wrap: wrap; 
-     gap: 10px; }
+     gap: 10px; 
+}
      
 .form-cadastro-grid .campo-input,
 .form-cadastro-grid .campo-select { flex: 1; min-width: 140px; }
@@ -91,6 +90,32 @@ transition: transform 0.9s ease-in-out;
     font-weight: bold;
 }
 .btn-excluir:hover { background-color: #bb2d3b; }
+
+/* Sprint 3: Dashboard */
+.dashboard-resumo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    color: #000;
+}
+#input-busca {
+    max-width: 350px;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.totalizador {
+    font-size: 1.1rem;
+}
+#total-itens {
+    color: #0f2c59;
+    font-size: 1.3rem;
+}
+
 /* TABELA */
 .tabela-custom { width: 100%; border-collapse: collapse; margin-top: 10px; }
 .tabela-custom th, .tabela-custom td {
@@ -111,31 +136,44 @@ transition: transform 0.9s ease-in-out;
 .bg-info      { background-color: #0dcaf0; color: #000; }
 .bg-secondary { background-color: #6c757d; }
 
+/* Sprint 3: Alerta de Estoque Crítico */
+.estoque-critico {
+    background-color: #ffe6e6 !important;
+}
+.estoque-critico td {
+    color: #cc0000;
+}
 
 .form-vertical-bloco {
-display: flex;
-flex-direction: column;
-gap: 15px; }
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
 
 .grupo-campo { 
-display: flex; 
-flex-direction: column; 
-gap: 5px; }
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px; 
+}
 
 .rotulo { 
-font-weight: 600; 
-font-size: 0.9rem; 
-color: #ffffff; }
+    font-weight: 600; 
+    font-size: 0.9rem; 
+    color: #ffffff; 
+}
 
 .linha-campos-tripla {
  display: flex; 
- gap: 15px; }
+ gap: 15px; 
+}
 
 .linha-campos-tripla .grupo-campo {
-     flex: 1; }
+     flex: 1; 
+}
 .container-botao-direita {
      text-align: right; 
-     margin-top: 10px; }
+     margin-top: 10px; 
+}
 
 .btn-baixar { background-color: #198754; }
 .btn-baixar:hover { background-color: #157347; }
